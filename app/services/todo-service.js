@@ -1,4 +1,5 @@
 import store from "../store.js";
+import toDo from "../models/todo.js"
 
 // @ts-ignore
 const todoApi = axios.create({
@@ -9,7 +10,11 @@ const todoApi = axios.create({
 class TodoService {
   getTodos() {
     console.log("Getting the Todo List");
-    todoApi.get();
+    todoApi.get("")
+    .then(res => {
+      let newToDo = res.data.map(t => new toDo(t))
+      store.commit("todo", newToDo)
+    });
     //TODO Handle this response from the server
   }
 
