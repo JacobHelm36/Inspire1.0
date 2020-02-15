@@ -1,6 +1,5 @@
 import Quote from "../models/quote.js";
 import _store from "../store.js"
-import store from "../store.js";
 
 // @ts-ignore
 const _quoteApi = axios.create({
@@ -15,9 +14,7 @@ class QuoteService {
       .get("")
       .then(res => {
         let quotes = new Quote(res.data.quote)
-        console.log(quotes)
-        store.commit("quote", quotes)
-        console.log(_store.State.quote, "from service")
+        _store.commit("quote", quotes)
       })
   }
 }

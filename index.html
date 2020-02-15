@@ -14,30 +14,42 @@
 	<div class="container-fluid">
 		<div class="row text-center">
 			<div class="col">
-				<h5>Your To Do List</h5>
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<form>
+							<div class="form-group">
+								<label for="todo">Task List</label>
+								<input type="text" class="form-control" id="task-input" 
+								placeholder="Add a task...">
+							</div>
+							<div class="form-group"></div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+								<label class="form-check-label" for="exampleCheck1">Check me out</label>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
+				<div id="todo-error"></div>
+				<form onsubmit=""></form>
+				<div id="todos"></div>
 			</div>
-			<div class="col" id="quote">get quote</div>
+			<div class="col" id="quote"></div>
 			<div class="col">
 				<h5 id="weather">Your Weather</h5>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-4"></div>
-		<div class="col-8">
-			<div class="row" id="quote-loc"></div>
+		<div class="row">
+				<div class="col" id="quote-loc"></div>
 		</div>
-	</div>
-	<div>
-		<!--A Todo List-->
-		<div id="todo-error"></div>
-		<form onsubmit=""></form>
-		<div id="todos"></div>
-	</div>
+			<!--A Todo List-->
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-	<script type="module" src="app/main.js"></script>
-</body>
-
+	</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+		<script type="module" src="app/main.js"></script>
+	</body>
+	
 </html>
 <html>
