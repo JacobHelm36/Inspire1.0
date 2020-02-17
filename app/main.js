@@ -9,7 +9,7 @@ class App {
     this.weatherController = new WeatherController();
     this.quoteController = new QuoteController();
     this.imageController = new ImageController()
-    //this.todoController = new TodoController();
+    this.todoController = new TodoController();
   }
 }
 

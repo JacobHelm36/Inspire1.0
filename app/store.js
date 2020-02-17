@@ -12,7 +12,9 @@ let _state = {
   /**@type {Quotes}*/
   quote: [],
   image: null,
-  todo: []
+  todo: [],
+  activeTodo: null,
+  myTodo: []
 };
 
 /** Collection of listeners to be called based on keyed state changes
@@ -20,10 +22,11 @@ let _state = {
  */
 let _listeners = {
   weather: [],
-  //todos: [],
   quote: [],
   image: [],
-  todo: []
+  todo: [],
+  activeTodo: [],
+  myTodo: []
 };
 
 /**
