@@ -2,28 +2,35 @@ import TodoService from "../services/todo-service.js";
 import store from "../store.js";
 
 //TODO Create the render function
+
 function _drawTodos() {
+  let count = store.State.myTodo.length
   let template= ""
   let tasks = store.State.myTodo
   tasks.forEach(task => {
     template += task.Template
   })
+  template += tasks[0].newTemp
   document.getElementById("task-list").innerHTML = template
   console.log(store.State.todo, "draw function")
-  //document.getElementById("tasks-count").innerHTML = `<h6>Task Count: '${this.id}'</h6>`
+  //document.getElementById("tasks-count").innerHTML = `<p>tasks</p>`
+  //count.toString() why won't this work?
 }
 
 export default class TodoController {
   constructor() {
     //TODO Remember to register your subscribers
-    store.subscribe("todo", _drawTodos)
-    store.subscribe("myTodo", _drawTodos)
     TodoService.getTodos();
-    TodoService.addMyTasks()
+    //store.subscribe("todo", _drawTodos)
+    store.subscribe("myTodo", _drawTodos)
+
     
     //this.mockPost()
   }
-
+  addMyTasks() {
+    TodoService.addMyTasks()
+  }
+    
 /*mockPost(){
   event.preventDefault()
   var newTry = {
@@ -39,12 +46,11 @@ export default class TodoController {
     event.preventDefault();
     var form = event.target;
     var todo = {
-      description: form.desc.value
+      description: form.description.value
     };
-    console.log(form.desc.value)
     TodoService.addMyTodo(todo);
-    console.log(store.State.todo)
-    TodoService.addMyTasks()
+    console.log(store.State.todo, "controller add event")
+    this.addMyTasks()
   }
 
   //NOTE This method will pass an Id to your service for the TODO that will need to be toggled
@@ -52,7 +58,7 @@ export default class TodoController {
     TodoService.toggleTodoStatus(todoId);
   }
 
-  //NOTE This method will pass an Id to your service for the TODO that will need to be deleted
+//passes id to remove whatever task from API
   removeTodo(todoId) {
     TodoService.removeTodo(todoId);
   }
