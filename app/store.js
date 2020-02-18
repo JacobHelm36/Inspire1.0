@@ -13,7 +13,6 @@ let _state = {
   quote: [],
   image: null,
   todo: [],
-  activeTodo: null,
   myTodo: []
 };
 
@@ -25,7 +24,6 @@ let _listeners = {
   quote: [],
   image: [],
   todo: [],
-  activeTodo: [],
   myTodo: []
 };
 

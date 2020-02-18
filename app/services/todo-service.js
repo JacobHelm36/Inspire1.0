@@ -13,12 +13,14 @@ class TodoService {
       res._id == todoId
     })*/
     todoApi
-    .delete(store.State.myTodo[0]._id)
+    .delete(todoId)
     //how do I reference the specific ID?
     .then(res => {
-      let myTasks = store.State.myTodo.filter(t => t._id != store.State.myTodo)
+      let myTasks = store.State.myTodo.findIndex(t => t._id == todoId)
+      store.State.myTodo.splice(myTasks, 1)
+      //use findIndexOf for the index
       //return myTasks
-      store.commit("myTodo", myTasks)
+      store.commit("myTodo", store.State.myTodo)
     })
     .catch(err => {
       throw new Error(err);
@@ -28,16 +30,16 @@ class TodoService {
   
   //get initial obj and store it in local storage
   //wont add to existing
-  addMyTodo(todo) {
-    let newTodo = new toDo(todo)
-    let myToDo = [...store.State.todo, newTodo];
-    store.commit("todo", myToDo);
-    console.log(store.State.todo, "1234")
-  }
+  // addMyTodo(todo) {
+  //   let newTodo = new toDo(todo)
+  //   let myToDo = [...store.State.todo, newTodo];
+  //   store.commit("todo", myToDo);
+  //   console.log(store.State.todo, "1234")
+  // }
   //posts obj from local storage
-  addMyTasks(){
+  addMyTodo(todo){
     todoApi
-    .post("", store.State.todo)
+    .post("", todo)
     .then(res => {
       let newTasks = new toDo(res.data.data)
       let myTasks = [...store.State.myTodo, newTasks]

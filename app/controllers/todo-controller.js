@@ -10,9 +10,8 @@ function _drawTodos() {
   tasks.forEach(task => {
     template += task.Template
   })
-  template += tasks[0].newTemp
   document.getElementById("task-list").innerHTML = template
-  console.log(store.State.todo, "draw function")
+  document.getElementById("task-count").innerHTML = store.State.myTodo.length.toString()
   //document.getElementById("tasks-count").innerHTML = `<p>tasks</p>`
   //count.toString() why won't this work?
 }
@@ -27,9 +26,9 @@ export default class TodoController {
     
     //this.mockPost()
   }
-  addMyTasks() {
-    TodoService.addMyTasks()
-  }
+  // addMyTasks() {
+  //   TodoService.addMyTasks()
+  // }
     
 /*mockPost(){
   event.preventDefault()
@@ -50,7 +49,7 @@ export default class TodoController {
     };
     TodoService.addMyTodo(todo);
     console.log(store.State.todo, "controller add event")
-    this.addMyTasks()
+    // this.addMyTasks()
   }
 
   //NOTE This method will pass an Id to your service for the TODO that will need to be toggled
