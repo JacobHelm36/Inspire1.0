@@ -44,7 +44,6 @@ class TodoService {
       let newTasks = new toDo(res.data.data)
       let myTasks = [...store.State.myTodo, newTasks]
       store.commit("myTodo", myTasks)
-      console.log(store.State.myTodo)
     })
     .catch(err => {
       throw new Error(err);
